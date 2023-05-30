@@ -1,7 +1,7 @@
 """Using pytest"""
 from Week1730th.function import multiply
 from unittest import TestCase
-from  Week1730th.function import square
+from Week1730th.function import square
 
 
 class Test(TestCase):
