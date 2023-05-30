@@ -2,6 +2,7 @@ from math import pi
 from unittest import TestCase
 
 from Week1730th.function import area_of_circle
+from Week1730th.function import multiply
 
 
 class Test(TestCase):
@@ -16,3 +17,10 @@ class Test(TestCase):
 
     def test_area_of_circle_returnError_when_a_NegativeValueIs_passed_again(self):
         self.assertRaises(TypeError, area_of_circle, "Asa")
+
+    def test_multiply(self):
+        self.assertEquals(multiply(2, 2), 4)
+        self.assertEquals(multiply(11, 2), 22)
+
+    def test_multiply_again(self):
+        self.assertRaises(TypeError, multiply, ("Asa", "Asa"))
