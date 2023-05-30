@@ -17,3 +17,7 @@ def multiply(first_number: float, second_number: float):
 
 def square(number):
     return number ** 2
+
+
+def subtract(first_number, second_number):
+    return first_number - second_number
