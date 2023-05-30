@@ -13,3 +13,7 @@ def area_of_circle(radius: int):
 
 def multiply(first_number: float, second_number: float):
     return first_number * second_number
+
+
+def square(number):
+    return number ** 2

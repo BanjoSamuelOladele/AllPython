@@ -24,3 +24,7 @@ class Test(TestCase):
 
     def test_multiply_again(self):
         self.assertRaises(TypeError, multiply, ("Asa", "Asa"))
+
+    """Using pytest"""
+    def test_multiplyAgain(self):
+        assert multiply(3, 5) == 15
