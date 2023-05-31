@@ -6,6 +6,7 @@ from Week1730th.function import multiply, subtract
 from unittest import TestCase
 from Week1730th.function import square
 from functions.functionAndFunction import floating_number
+from functions.List_ import list_to_zero
 
 
 def test_float():
@@ -27,14 +28,31 @@ def test_discount():
     assert functions.functionAndFunction.discount(1000, 5) == 950
 
 
-def test_discount_errors():
-    with pytest.raises(TypeError):
+def test_discount_errors_ValueError():
+    with pytest.raises(ValueError):
         functions.functionAndFunction.discount(0, 10)
+
+
+def test_discount_errors_():
+    with pytest.raises(ValueError):
+        functions.functionAndFunction.discount(3, 7)
 
 
 def test_discount_errors_again():
     with pytest.raises(TypeError):
-        functions.functionAndFunction.discount("0", "o")
+        functions.functionAndFunction.discount("3", "7")
+
+
+def test_list_element_to_zero():
+    lst = [1, 2, 3, 4, 5, 6, 7]
+    assert list_to_zero(lst) == [0, 2, 3, 4, 5, 6, 0]
+    lst1 = [3, 4, 5, 67, 45, 32, 1]
+    assert list_to_zero(lst1) == [0, 4, 5, 67, 45, 32, 0]
+
+
+def test_list_element_with_another_data_structure():
+    with pytest.raises(TypeError):
+        list_to_zero(3)
 
 
 class Test(TestCase):

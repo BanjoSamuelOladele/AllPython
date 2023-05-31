@@ -32,7 +32,9 @@ def check_status(right):
 
 def discount(price, discount):
     if price <= 0 or discount <= 0:
-        raise TypeError("Zero value not allowed")
-    if type(price) != float or int or type(discount) != float or int:
+        raise ValueError("Zero value not allowed")
+    if type(price) != float or type(discount) != float:
         raise ValueError("Integers allowed alone")
+    if type(price) is str or type(discount) is str:
+        raise TypeError("Integers allowed")
     return price - (price * (discount / 100))
