@@ -1,6 +1,7 @@
 from math import pi
 from unittest import TestCase
 
+from functions.functionAndFunction import floating_number
 from Week1730th.function import area_of_circle
 from Week1730th.function import multiply
 
@@ -26,5 +27,9 @@ class Test(TestCase):
         self.assertRaises(TypeError, multiply, ("Asa", "Asa"))
 
     """Using pytest"""
+
     def test_multiplyAgain(self):
         assert multiply(3, 5) == 15
+
+    def test_float(self):
+        self.assertRaises(TypeError, floating_number, (3, 9))
