@@ -6,7 +6,7 @@ from Week1730th.function import multiply, subtract
 from unittest import TestCase
 from Week1730th.function import square
 from functions.functionAndFunction import floating_number
-from functions.List_ import list_to_zero
+from functions.List_ import list_to_zero, validate_name_mail
 
 
 def test_float():
@@ -53,6 +53,16 @@ def test_list_element_to_zero():
 def test_list_element_with_another_data_structure():
     with pytest.raises(TypeError):
         list_to_zero(3)
+
+
+def test_function_return_valid_mail_address():
+    assert functions.List_.validate_name_mail("dele") == "dele@gmail.com"
+    assert functions.List_.validate_name_mail("samuel") == "samuel@gmail.com"
+
+
+def test_valid_mail_address_throws_error_when_integers_are_inputted():
+    with pytest.raises(TypeError):
+        validate_name_mail(22222)
 
 
 class Test(TestCase):

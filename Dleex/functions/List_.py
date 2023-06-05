@@ -8,3 +8,9 @@ def list_to_zero(lst):
 
 lst = [1, 2, 3, 4, 5, 6, 7]
 print(list_to_zero(lst))
+
+
+def validate_name_mail(valid_name):
+    if type(valid_name) is not str:
+        raise TypeError("should contain letters")
+    return f"{valid_name}@gmail.com"
