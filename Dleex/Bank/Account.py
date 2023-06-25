@@ -1,4 +1,4 @@
-class Account:
+class Accounts:
     def __init__(self, first_name, last_name, password):
         self.__account_number = None
         self.__amount = 0

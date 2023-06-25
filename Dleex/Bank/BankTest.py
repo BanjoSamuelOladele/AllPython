@@ -16,4 +16,5 @@ class MyClassTest(unittest.TestCase):
         my_bank.register_new_customer("firstName", "secondName", "2222")
         my_bank.deposit_to_account("22334455660", 3000)
         self.assertEquals(1, my_bank.size())
+        print("----", my_bank.check_balance_via_account("22334455660", "2222"))
         self.assertEquals(3000, my_bank.check_balance_via_account("22334455660", "2222"))
