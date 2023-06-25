@@ -78,7 +78,7 @@ while len(user_input) >= 13 or len(user_input) <= 16:
         print("card number is long")
         user_input = input("Enter your card number: ")
 else:
-    print(confirm_if_card_number_is_valid("userinput"))
+    print(confirm_if_card_number_is_valid(user_input))
 # if len(user_input) < 13:
 #     print("card number too short")
 #     user_input = input("Enter your card number: ")
@@ -86,7 +86,7 @@ else:
 #     print("card number too long")
 #     user_input = input("Enter your card number: ")
 if user_input.isnumeric():
-    print(confirm_if_card_number_is_valid("userinput"))
+    print(confirm_if_card_number_is_valid(user_input))
 else:
     print("alphabet not allowed here")
     user_input = input("Enter your card number: ")
