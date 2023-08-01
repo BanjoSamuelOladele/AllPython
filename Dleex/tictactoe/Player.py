@@ -37,7 +37,7 @@ class Player:
         return self.__sign
 
     def movePlayer(self):
-        return int(input("Enter a position: "))
+        int(input("Enter a position: "))
 
 
 player = Player()
@@ -49,8 +49,6 @@ try:
     player.setSign("4")
 except ValueError as error:
     print(error)
-
-
 
 
 def main():

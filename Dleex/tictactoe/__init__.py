@@ -7,7 +7,8 @@ board = Board()
 
 
 def main():
-    print(board.showBoard())
+    print(board.playGame())
+    player2.movePlayer()
 
 
 #
