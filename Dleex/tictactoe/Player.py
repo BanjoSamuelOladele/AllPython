@@ -51,6 +51,8 @@ except ValueError as error:
     print(error)
 
 
+
+
 def main():
     print(player.getName(), player.getSign())
 
