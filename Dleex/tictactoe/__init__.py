@@ -7,7 +7,7 @@ board = Board()
 
 
 def main():
-    board.showBoard()
+    print(board.showBoard())
 
 
 #

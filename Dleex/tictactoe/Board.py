@@ -5,13 +5,13 @@ class Board:
 
     def showBoard(self):
 
-        print("__________")
-        print("%s | %s | %s" % (self.__element_position[1], self.__element_position[2], self.__element_position[3]))
-        print("__________")
-        print(self.__element_position[4], "|", self.__element_position[5], "|", self.__element_position[6])
-        print("__________")
-        print(self.__element_position[7], "|", self.__element_position[8], "|", self.__element_position[9])
-        print("__________")
+        # print("__________")
+        # print("%s | %s | %s" % (self.__element_position[1], self.__element_position[2], self.__element_position[3]))
+        # print("__________")
+        # print(self.__element_position[4], "|", self.__element_position[5], "|", self.__element_position[6])
+        # print("__________")
+        # print(self.__element_position[7], "|", self.__element_position[8], "|", self.__element_position[9])
+        # print("__________")
 
     def playGame(self):
         self.showBoard()
