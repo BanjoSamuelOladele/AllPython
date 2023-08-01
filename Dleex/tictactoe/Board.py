@@ -4,30 +4,29 @@ class Board:
     __element_position = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 
     def showBoard(self):
+        formatted_string = "{} | {} | {} \n" \
+                           "-----------\n" \
+                           "{} | {} | {} \n" \
+                           "-----------\n" \
+                           "{} | {} | {} ".format(self.__element_position[1], self.__element_position[2],
+                                                  self.__element_position[3], self.__element_position[4],
+                                                  self.__element_position[5], self.__element_position[6],
+                                                  self.__element_position[7], self.__element_position[8],
+                                                  self.__element_position[9])
+        return formatted_string
 
-        # print("__________")
-        # print("%s | %s | %s" % (self.__element_position[1], self.__element_position[2], self.__element_position[3]))
-        # print("__________")
-        # print(self.__element_position[4], "|", self.__element_position[5], "|", self.__element_position[6])
-        # print("__________")
-        # print(self.__element_position[7], "|", self.__element_position[8], "|", self.__element_position[9])
-        # print("__________")
-
-    def playGame(self):
-        self.showBoard()
+    def playGame(self, ):
+        return self.showBoard()
 
     def assignPlayerChoice(self, element_number, player):
         self.__element_position[element_number] = player
 
-    def shifting(self):
-        position = int(input("Enter 1 - 9: ")) - 1
-
-        self.__element_position[position] = "X"
-
+    # for game in action
     def check_running_game(self, board: list):
         self.__check_if_win(board)
         self.__check_if_tie(board)
 
+    # for continuity of game
     def sort_game_status(self, status):
         self.__running_game = status
 
