@@ -3,7 +3,7 @@ board = [" ", " ", " ",
          " ", " ", " "]
 
 player1 = "xX"
-player2 = ""
+player2 = "oO"
 running_game = True
 
 
