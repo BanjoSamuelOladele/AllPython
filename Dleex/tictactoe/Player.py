@@ -1,4 +1,3 @@
-
 class Player:
     def __init__(self):
         self.__sign = None
@@ -19,7 +18,7 @@ class Player:
     def getName(self):
         return self.__name
 
-    def getSign(self):
+    def getSign(self) -> str:
         return self.__sign
 
     def move_player(self):
@@ -28,6 +27,6 @@ class Player:
             if 1 <= int(inp) <= 9:
                 return int(inp)
             else:
-                raise TypeError("input must be between 1 - 9")
+                raise ValueError("input must be between 1 - 9")
         else:
-            raise TypeError("Must be digit alone")
+            raise ValueError("Must be digit alone")

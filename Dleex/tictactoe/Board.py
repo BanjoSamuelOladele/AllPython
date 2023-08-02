@@ -15,9 +15,13 @@ class Board:
                                                   self.__element_position[9])
         print(formatted_string)
 
+    def clear_board(self):
+        self.__element_position.clear()
+
     def play_game(self, number: int, player: str):
         self.assign_player_choice(number, player)
         print(self.showBoard())
+        print(self.check_running_game(self.__element_position))
         self.__winner = player
         return self.__winner
 
@@ -26,7 +30,6 @@ class Board:
             self.__element_position[element_number] = player
         else:
             raise ValueError("Already filled, pick another position")
-        self.check_running_game(self.__element_position)
 
     # for game in action
     def check_running_game(self, board: list):
@@ -34,37 +37,39 @@ class Board:
         self.__check_if_tie(board)
 
     # for continuity of game
-    def ask_for_continuity(self, status):
+    def ask_for_continuity(self, status: bool):
         self.__running_game = status
 
-    def sort_game_status(self):
+    def sort_game_status(self) -> bool:
         return self.__running_game
 
-    def __check_if_win(self, board: list):
-        if self.__check_for_row(board) or self.__check_horizontally(board) or self.__check_diagonal(board):
+    def __check_if_win(self, board: list) -> str:
+        if (self.__check_for_row(board) or
+                self.__check_horizontally(board) or
+                self.__check_diagonal(board)):
+            self.__running_game = False
             return "It is a win"
-        self.__running_game = False
 
     def __check_for_row(self, board: list):
-        if board[0] == board[1] == board[2] and board[1] != " ":
+        if board[1] == board[2] == board[3]:
             return True
-        elif board[3] == board[4] == board[5] and board[4] != " ":
+        elif board[4] == board[5] == board[6]:
             return True
-        elif board[6] == board[7] == board[8] and board[6] != " ":
+        elif board[7] == board[8] == board[9]:
             return True
 
     def __check_horizontally(self, board: list):
-        if board[0] == board[3] == board[6] and board[0] != " ":
+        if board[1] == board[4] == board[7]:
             return True
-        elif board[1] == board[4] == board[7] and board[1] != " ":
+        elif board[2] == board[5] == board[8]:
             return True
-        elif board[2] == board[5] == board[8] and board[6] != " ":
+        elif board[3] == board[6] == board[9]:
             return True
 
     def __check_diagonal(self, board: list):
-        if board[0] == board[4] == board[8] and board[0] != " ":
+        if board[1] == board[5] == board[9]:
             return True
-        elif board[2] == board[4] == board[6] and board[4] != " ":
+        elif board[3] == board[5] == board[7]:
             return True
 
     def __check_if_tie(self, board: list):
