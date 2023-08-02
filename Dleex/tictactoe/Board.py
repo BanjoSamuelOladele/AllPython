@@ -1,7 +1,10 @@
 class Board:
-    __running_game = True
-    __winner = None
-    __element_position = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+
+    def __int__(self):
+        __running_game = True
+        __winner = None
+        __element_position = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 
     def showBoard(self):
         formatted_string = "{} | {} | {} \n" \
@@ -13,9 +16,10 @@ class Board:
                                                   self.__element_position[5], self.__element_position[6],
                                                   self.__element_position[7], self.__element_position[8],
                                                   self.__element_position[9])
-        return formatted_string
+        print(formatted_string)
 
-    def playGame(self, ):
+    def playGame(self, number, player):
+        self.__element_position[number] = player
         return self.showBoard()
 
     def assignPlayerChoice(self, element_number, player):
