@@ -1,6 +1,10 @@
+from Dleex.tictactoe.Action_Point import Action_Entity
+
+
 class Board:
-    __running_game = True
+    # __running_game = True
     __winner = None
+    __action_ = Action_Entity()
     __element_position = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 
     def showBoard(self):
@@ -15,14 +19,14 @@ class Board:
                                                   self.__element_position[9])
         print(formatted_string)
 
-    def clear_board(self):
-        self.__element_position.clear()
-
     def play_game(self, number: int, player: str):
         self.assign_player_choice(number, player)
         print(self.showBoard())
         print(self.check_running_game(self.__element_position))
-        self.__winner = player
+        if not self.__action_.get_game_status():
+            return self.__get_winner()
+
+    def __get_winner(self):
         return self.__winner
 
     def assign_player_choice(self, element_number: int, player):
@@ -33,46 +37,8 @@ class Board:
 
     # for game in action
     def check_running_game(self, board: list):
-        self.__check_if_win(board)
-        self.__check_if_tie(board)
+        self.__action_.check_running_game(board)
 
     # for continuity of game
-    def ask_for_continuity(self, status: bool):
-        self.__running_game = status
-
     def sort_game_status(self) -> bool:
-        return self.__running_game
-
-    def __check_if_win(self, board: list) -> str:
-        if (self.__check_for_row(board) or
-                self.__check_horizontally(board) or
-                self.__check_diagonal(board)):
-            self.__running_game = False
-            return "It is a win"
-
-    def __check_for_row(self, board: list):
-        if board[1] == board[2] == board[3]:
-            return True
-        elif board[4] == board[5] == board[6]:
-            return True
-        elif board[7] == board[8] == board[9]:
-            return True
-
-    def __check_horizontally(self, board: list):
-        if board[1] == board[4] == board[7]:
-            return True
-        elif board[2] == board[5] == board[8]:
-            return True
-        elif board[3] == board[6] == board[9]:
-            return True
-
-    def __check_diagonal(self, board: list):
-        if board[1] == board[5] == board[9]:
-            return True
-        elif board[3] == board[5] == board[7]:
-            return True
-
-    def __check_if_tie(self, board: list):
-        if " " not in board:
-            return "It is a tie"
-        self.__running_game = False
+        return self.__action_.get_game_status()

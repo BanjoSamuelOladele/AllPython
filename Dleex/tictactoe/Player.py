@@ -21,8 +21,8 @@ class Player:
     def getSign(self) -> str:
         return self.__sign
 
-    def move_player(self):
-        inp = input("Enter a position between 1 - 9: ")
+    def move_player(self, type_is):
+        inp = input(f"{type_is}'s turn, Enter a position between 1 - 9: ")
         if inp.isdigit():
             if 1 <= int(inp) <= 9:
                 return int(inp)
