@@ -6,30 +6,17 @@ class Player:
         self.__sign = None
         self.__name = None
 
-    # def __int__(self, name, sign):
-    #     self.setName(name)
-    #     self.setSign(sign)
-
-    def setName(self, name):
-        check = self.__contain_only_string(name)
-        if check:
+    def setName(self, name: str):
+        if name.isalpha():
             self.__name = name
         else:
-            print(ValueError("Only Alphabets allowed"))
-            self.setName(name)
+            raise ValueError("Only alphabet")
 
-    def __contain_only_string(self, string_input: str) -> bool:
-        pattern = r'^[a-zA-Z]+$'
-        match = re.match(pattern, string_input)
-        return bool(match)
-
-    def setSign(self, sign):
-        check = self.__contain_only_string(sign)
-        if check:
+    def setSign(self, sign: str):
+        if sign.isalpha():
             self.__sign = sign
         else:
-            print(ValueError("Use only Alphabets"))
-            self.setSign(sign)
+            raise ValueError("Use only Alphabets")
 
     def getName(self):
         return self.__name
@@ -38,15 +25,13 @@ class Player:
         return self.__sign
 
     def movePlayer(self):
-        try:
-            return int(input("Enter a position: "))
-        except TypeError as error:
-            print("Not a number ", error)
+        inp = input("Enter a position: ")
+        if inp.isdigit():
+            if 1 <= int(inp) <= 9:
+                return inp
+            else:
+                print("input must be between 1 - 9")
+                self.movePlayer()
+        else:
+            print("Input must be digit")
             self.movePlayer()
-
-# def main():
-#     print(player.getName(), player.getSign())
-
-
-# if __name__ == "__main__":
-#     main()

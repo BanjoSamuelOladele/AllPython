@@ -24,12 +24,39 @@ class Game:
         self.__player_one = Player()
         self.__player_two = Player()
         if number == 0:
-            self.__player_one.setName(input(f"Enter player {number + 1} name: "))
-            self.__player_one.setSign(input(f"Enter player {number + 1} icon: "))
-            print()
-
+            try:
+                self.__create_player_name(number, self.__player_one, self.__player_two)
+                self.__create_player_sign(number, self.__player_one, self.__player_two)
+                print()
+            except ValueError as error:
+                print(error)
         if number == 1:
-            self.__player_two.setName(input(f"Enter player {number + 1} name: "))
-            self.__player_two.setSign(input(f"Enter player{number + 1} icon: "))
+            try:
+                self.__create_player_name(number, self.__player_one, self.__player_two)
+                self.__create_player_sign(number, self.__player_one, self.__player_two)
+            except ValueError as error:
+                print(error)
 
+    def __create_player_name(self, index, play1:Player, play2:Player):
+        name = None
+        try:
+            name = input(f"Enter player {index + 1} name: ")
+        except ValueError as error:
+            print(error)
+            self.__create_player_name(index,play1,play2)
+        if index == 0:
+            play1.setName(name)
+        if index == 1:
+            play2.setName(name)
 
+    def __create_player_sign(self, number, playe1: Player, play2: Player):
+        sign = None
+        try:
+            sign = input(f"Enter player{number + 1} icon: ")
+        except ValueError as error:
+            print(error)
+            self.__create_player_sign(number,playe1,play2)
+        if number == 0:
+            playe1.setSign(sign)
+        if number == 1:
+            play2.setSign(sign)
