@@ -1,5 +1,3 @@
-import re
-
 
 class Player:
     def __init__(self):
@@ -24,14 +22,12 @@ class Player:
     def getSign(self):
         return self.__sign
 
-    def movePlayer(self):
-        inp = input("Enter a position: ")
+    def move_player(self):
+        inp = input("Enter a position between 1 - 9: ")
         if inp.isdigit():
             if 1 <= int(inp) <= 9:
-                return inp
+                return int(inp)
             else:
-                print("input must be between 1 - 9")
-                self.movePlayer()
+                raise TypeError("input must be between 1 - 9")
         else:
-            print("Input must be digit")
-            self.movePlayer()
+            raise TypeError("Must be digit alone")

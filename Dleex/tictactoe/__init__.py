@@ -1,13 +1,10 @@
 from Dleex.tictactoe.Game import Game
-from Dleex.tictactoe.Game import Board
 
-__game_boy = Game()
-# __board = Board.Board()
+game_boy = Game()
 
 
 def main():
-    __game_boy.start_game()
-    # __board.showBoard()
+    game_boy.start_game()
 
 
 if __name__ == "__main__":

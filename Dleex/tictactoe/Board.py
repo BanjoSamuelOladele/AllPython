@@ -1,5 +1,4 @@
 class Board:
-
     __running_game = True
     __winner = None
     __element_position = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -16,12 +15,18 @@ class Board:
                                                   self.__element_position[9])
         print(formatted_string)
 
-    def play_game(self, number, player):
-        self.__element_position[number] = player
-        return self.showBoard()
+    def play_game(self, number: int, player: str):
+        self.assign_player_choice(number, player)
+        print(self.showBoard())
+        self.__winner = player
+        return self.__winner
 
-    def assign_player_choice(self, element_number, player):
-        self.__element_position[element_number] = player
+    def assign_player_choice(self, element_number: int, player):
+        if self.__element_position[element_number] == " ":
+            self.__element_position[element_number] = player
+        else:
+            raise ValueError("Already filled, pick another position")
+        self.check_running_game(self.__element_position)
 
     # for game in action
     def check_running_game(self, board: list):
@@ -29,8 +34,11 @@ class Board:
         self.__check_if_tie(board)
 
     # for continuity of game
-    def sort_game_status(self, status):
+    def ask_for_continuity(self, status):
         self.__running_game = status
+
+    def sort_game_status(self):
+        return self.__running_game
 
     def __check_if_win(self, board: list):
         if self.__check_for_row(board) or self.__check_horizontally(board) or self.__check_diagonal(board):
