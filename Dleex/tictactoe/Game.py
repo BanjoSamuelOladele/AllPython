@@ -1,5 +1,5 @@
-from tictactoe import Board
-from tictactoe.Player import Player
+from Dleex.tictactoe import Board
+from Dleex.tictactoe.Player import Player
 
 
 class Game:
@@ -31,3 +31,5 @@ class Game:
         if number == 1:
             self.__player_two.setName(input(f"Enter player {number + 1} name: "))
             self.__player_two.setSign(input(f"Enter player{number + 1} icon: "))
+
+
