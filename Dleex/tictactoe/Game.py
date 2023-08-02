@@ -23,24 +23,27 @@ class Game:
     def __run_game(self):
         print(self.__board.showBoard())
         while self.__board.sort_game_status():
-            for num in range(0, 9):
-                if num % 2 == 0:
-                    number = 0
-                    try:
-                        number = self.__player_one.move_player()
-                        self.__play_with(number, self.__player_one.getSign())
-                    except ValueError as error:
-                        print(error)
-                        self.__play_with(number, self.__player_one.getSign())
-                if num % 2 != 0:
-                    number = 0
-                    try:
-                        number = self.__player_two.move_player()
-                        self.__play_with(number, self.__player_two.getSign())
-                    except ValueError as err:
-                        print(err)
-                        self.__play_with(number, self.__player_two.getSign())
-            print("bye bye")
+            self.__extracts()
+        print("bye bye")
+
+    def __extracts(self):
+        for num in range(0, 9):
+            if num % 2 == 0:
+                number = 0
+                try:
+                    number = self.__player_one.move_player()
+                    self.__play_with(number, self.__player_one.getSign())
+                except ValueError as error:
+                    print(error)
+                    self.__play_with(number, self.__player_one.getSign())
+            if num % 2 != 0:
+                number = 0
+                try:
+                    number = self.__player_two.move_player()
+                    self.__play_with(number, self.__player_two.getSign())
+                except ValueError as err:
+                    print(err)
+                    self.__play_with(number, self.__player_two.getSign())
 
     def __play_with(self, number, player):
         self.__board.play_game(number, player)
