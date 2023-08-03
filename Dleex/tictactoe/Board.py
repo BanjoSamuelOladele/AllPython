@@ -22,9 +22,13 @@ class Board:
     def play_game(self, number: int, player: str):
         self.assign_player_choice(number, player)
         print(self.showBoard())
-        self.check_running_game(self.__element_position)
-        if not self.__running_game:
-            print(self.__get_winner(), "won")
+        # self.check_running_game(self.__element_position)
+        # if not self.__running_game:
+        #     print(self.__get_winner(), "won")
+
+    def check_it_now(self) -> bool:
+        if self.check_running_game(self.__element_position):
+            return True
 
     def __get_winner(self):
         return self.__winner
@@ -36,10 +40,7 @@ class Board:
             raise ValueError("Already filled, pick another position")
 
     # for game in action
-    def check_running_game(self, board: list):
+    def check_running_game(self, board: list) -> bool:
         self.__running_game = self.__action_.check_for_win(board)
         return self.__running_game
 
-    # for continuity of game
-    def sort_game_status(self) -> bool:
-        return self.__running_game

@@ -15,13 +15,13 @@ class Player:
         else:
             raise ValueError("Use only Alphabets")
 
-    def getName(self):
+    def getName(self) -> str:
         return self.__name
 
     def getSign(self) -> str:
         return self.__sign
 
-    def move_player(self, type_is):
+    def move_player(self, type_is) -> int:
         inp = input(f"{type_is}'s turn, Enter a position between 1 - 9: ")
         if inp.isdigit():
             if 1 <= int(inp) <= 9:

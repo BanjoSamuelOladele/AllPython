@@ -6,6 +6,7 @@ class Game:
     __player_one = Player.Player()
     __player_two = Player.Player()
     __board = Board.Board()
+    __check_status = True
 
     def start_game(self):
         print("Tick Tac Toe")
@@ -21,28 +22,23 @@ class Game:
             self.__call_class_player(number)
 
     def __run_game(self):
-        print(self.__board.showBoard())
-        num = 0
-        while self.__board.sort_game_status():
-            for num in range(0, 9):
-                if num % 2 == 0:
-                    number = 0
-                    try:
-                        number = self.__player_one.move_player(self.__player_one.getSign())
-                        self.__play_with(number, self.__player_one.getSign())
-                    except ValueError as error:
-                        print(error)
-                        self.__play_with(number, self.__player_one.getSign())
-                if num % 2 != 0:
-                    number = 0
-                    try:
-                        number = self.__player_two.move_player(self.__player_two.getSign())
-                        self.__play_with(number, self.__player_two.getSign())
-                    except ValueError as err:
-                        print(err)
-                        self.__play_with(number, self.__player_two.getSign())
-            # self.__extracts(num)
-
+        while self.__check_status:
+            print(self.__board.showBoard())
+            number = 0
+            try:
+                number = self.__player_one.move_player(self.__player_one.getSign())
+                self.__play_with(number, self.__player_one.getSign())
+            except ValueError as error:
+                print(error)
+                self.__play_with(number, self.__player_one.getSign())
+            try:
+                number = self.__player_two.move_player(self.__player_two.getSign())
+                self.__play_with(number, self.__player_two.getSign())
+            except ValueError as err:
+                print(err)
+                self.__play_with(number, self.__player_two.getSign())
+        if self.__board.check_it_now():
+            self.__check_status = False
         print("bye bye")
 
     # def __extracts(self, num):

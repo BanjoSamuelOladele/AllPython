@@ -31,4 +31,4 @@ class Action_Entity:
     def check_for_win(self, inp: list) -> bool:
         if self.__check_diagonal(inp) or self.__check_horizontally(inp) or self.__check_for_row(inp):
             print("it is a win!")
-            return False
+            return True
