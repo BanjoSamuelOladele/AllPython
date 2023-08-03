@@ -35,7 +35,6 @@ class Board:
         else:
             raise ValueError("Already filled, pick another position")
 
-
     # for game in action
     def check_running_game(self, board: list):
         self.__running_game = self.__action_.check_for_win(board)

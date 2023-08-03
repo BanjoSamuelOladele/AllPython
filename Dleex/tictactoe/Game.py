@@ -84,14 +84,14 @@ class Game:
                 self.__player_one.setSign(sign)
             except ValueError as err:
                 print(err)
-                self.__checking_player_index(number, sign)
+                self.__create_player_sign(number)
         if number == 1:
             check = None
             try:
                 check = self.__player_one.getSign().lower()
             except ValueError as err:
                 print(err)
-                self.__checking_player_index()
+                self.__create_player_sign(number)
             if check != sign.lower():
                 self.__player_two.setSign(sign)
             else:
