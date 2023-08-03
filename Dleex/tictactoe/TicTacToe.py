@@ -57,8 +57,10 @@ def check_diagonal(inp: list):
 
 
 def check_for_win(inp: list):
+    global running_game
     if check_diagonal(inp) or check_horizontally(inp) or check_for_row(inp):
         print("it is a win!")
+        running_game = False
     else:
         check_for_tie(board)
 

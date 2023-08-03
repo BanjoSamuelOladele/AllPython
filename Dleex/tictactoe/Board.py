@@ -2,7 +2,7 @@ from Dleex.tictactoe.Action_Point import Action_Entity
 
 
 class Board:
-    # __running_game = True
+    __running_game = True
     __winner = None
     __action_ = Action_Entity()
     __element_position = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -22,9 +22,9 @@ class Board:
     def play_game(self, number: int, player: str):
         self.assign_player_choice(number, player)
         print(self.showBoard())
-        print(self.check_running_game(self.__element_position))
-        if not self.__action_.get_game_status():
-            return self.__get_winner()
+        self.check_running_game(self.__element_position)
+        if not self.__running_game:
+            print(self.__get_winner(), "won")
 
     def __get_winner(self):
         return self.__winner
@@ -35,10 +35,12 @@ class Board:
         else:
             raise ValueError("Already filled, pick another position")
 
+
     # for game in action
     def check_running_game(self, board: list):
-        self.__action_.check_running_game(board)
+        self.__running_game = self.__action_.check_for_win(board)
+        return self.__running_game
 
     # for continuity of game
     def sort_game_status(self) -> bool:
-        return self.__action_.get_game_status()
+        return self.__running_game

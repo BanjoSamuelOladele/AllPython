@@ -1,42 +1,34 @@
 class Action_Entity:
-    __running_game = True
 
-    def get_game_status(self):
-        return self.__running_game
+    def check_for_tie(self, inp: list):
+        if " " not in inp:
+            print(inp)
+            print("it is a tie")
+            return False
 
-    def check_running_game(self, board: list):
-        self.__check_if_win(board)
-        self.__check_if_tie(board)
-
-    def __check_if_win(self, board: list) -> str:
-        if self.__check_for_row(board) or self.__check_horizontally(board) or self.__check_diagonal(
-                board):
-            self.__running_game = False
-            return "It is a win"
-
-    def __check_for_row(self, board: list) -> bool:
-        if board[1] == board[2] == board[3]:
+    def __check_for_row(self, inp: list):
+        if inp[1] == inp[2] == inp[3] and inp[1] != " ":
             return True
-        elif board[4] == board[5] == board[6]:
+        elif inp[4] == inp[5] == inp[6] and inp[4] != " ":
             return True
-        elif board[7] == board[8] == board[9]:
+        elif inp[7] == inp[8] == inp[9] and inp[7] != " ":
             return True
 
-    def __check_horizontally(self, board: list) -> bool:
-        if board[1] == board[4] == board[7]:
+    def __check_horizontally(self, inp: list):
+        if inp[1] == inp[4] == inp[7] and inp[1] != " ":
             return True
-        elif board[2] == board[5] == board[8]:
+        elif inp[2] == inp[5] == inp[8] and inp[2] != " ":
             return True
-        elif board[3] == board[6] == board[9]:
-            return True
-
-    def __check_diagonal(self, board: list) -> bool:
-        if board[1] == board[5] == board[9]:
-            return True
-        elif board[3] == board[5] == board[7]:
+        elif inp[3] == inp[6] == inp[9] and inp[3] != " ":
             return True
 
-    def __check_if_tie(self, board: list) -> str:
-        if " " not in board:
-            self.__running_game = False
-            return "It is a tie"
+    def __check_diagonal(self, inp: list):
+        if inp[1] == inp[5] == inp[9] and inp[1] != " ":
+            return True
+        elif inp[3] == inp[5] == inp[7] and inp[3] != " ":
+            return True
+
+    def check_for_win(self, inp: list) -> bool:
+        if self.__check_diagonal(inp) or self.__check_horizontally(inp) or self.__check_for_row(inp):
+            print("it is a win!")
+            return False

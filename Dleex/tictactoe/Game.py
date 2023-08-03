@@ -8,7 +8,7 @@ class Game:
     __board = Board.Board()
 
     def start_game(self):
-        print("Tic Tac Toe")
+        print("Tick Tac Toe")
         self.__create_player()
         print("Player 1 Name = ", self.__player_one.getName(),
               "Icon is", self.__player_one.getSign())
@@ -22,30 +22,30 @@ class Game:
 
     def __run_game(self):
         print(self.__board.showBoard())
-        for num in range(0, 9):
-            while self.__board.sort_game_status():
-                self.__extracts(num)
+        num = 0
+        while self.__board.sort_game_status():
+            for num in range(0, 9):
+                if num % 2 == 0:
+                    number = 0
+                    try:
+                        number = self.__player_one.move_player(self.__player_one.getSign())
+                        self.__play_with(number, self.__player_one.getSign())
+                    except ValueError as error:
+                        print(error)
+                        self.__play_with(number, self.__player_one.getSign())
+                if num % 2 != 0:
+                    number = 0
+                    try:
+                        number = self.__player_two.move_player(self.__player_two.getSign())
+                        self.__play_with(number, self.__player_two.getSign())
+                    except ValueError as err:
+                        print(err)
+                        self.__play_with(number, self.__player_two.getSign())
+            # self.__extracts(num)
+
         print("bye bye")
 
-    def __extracts(self, num):
-        if num % 2 == 0:
-            number = 0
-            try:
-                number = self.__player_one.move_player(self.__player_one.getSign())
-                self.__play_with(number, self.__player_one.getSign())
-                num += 1
-            except ValueError as error:
-                print(error)
-                self.__play_with(number, self.__player_one.getSign())
-        if num % 2 != 0:
-            number = 0
-            try:
-                number = self.__player_two.move_player(self.__player_two.getSign())
-                self.__play_with(number, self.__player_two.getSign())
-                num += 1
-            except ValueError as err:
-                print(err)
-                self.__play_with(number, self.__player_two.getSign())
+    # def __extracts(self, num):
 
     def __play_with(self, number, player):
         self.__board.play_game(number, player)
@@ -71,19 +71,27 @@ class Game:
             self.__player_two.setName(name)
 
     def __create_player_sign(self, number):
-        sign = None
         try:
             sign = input(f"Enter player{number + 1} icon: ")
+            self.__checking_player_index(number, sign)
         except ValueError as error:
             print(error)
             self.__create_player_sign(number)
-        self.__checking_player_index(number, sign)
 
     def __checking_player_index(self, number, sign):
         if number == 0:
-            self.__player_one.setSign(sign)
+            try:
+                self.__player_one.setSign(sign)
+            except ValueError as err:
+                print(err)
+                self.__checking_player_index(number, sign)
         if number == 1:
-            check = self.__player_one.getSign().lower()
+            check = None
+            try:
+                check = self.__player_one.getSign().lower()
+            except ValueError as err:
+                print(err)
+                self.__checking_player_index()
             if check != sign.lower():
                 self.__player_two.setSign(sign)
             else:
